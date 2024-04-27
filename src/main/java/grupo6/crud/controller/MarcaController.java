@@ -1,9 +1,13 @@
 package grupo6.crud.controller;
 
 import grupo6.crud.Marca;
+import grupo6.crud.service.MarcaService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
+import java.util.List;
 
 
 /*
@@ -17,7 +21,8 @@ Servicio para eliminar marcas (solo borrado lógico)
 @RestController
 public class MarcaController {
 
-
+    @Autowired
+    private MarcaService marcaService;
     public Marca marca(){
         Marca marca = new Marca();
         marca.setDescripcion("Adidas");
@@ -25,10 +30,17 @@ public class MarcaController {
         return marca;
     }
 
+    /*
     //Servicio Obtener todas las marcas
     @GetMapping("/obtenerTodasMarca")
     public String obtenerTodasMarca(@RequestParam String modelo) {
         return "Lista de todas las marcas" + modelo;
+    }
+    */
+    @GetMapping("/obtenerTodasMarca")
+    public ResponseEntity<List<Marca>> obtenerTodasMarca() {
+        List<Marca> marcas = marcaService.obtenerTodasMarca();
+        return ResponseEntity.ok(marcas);
     }
 
 
