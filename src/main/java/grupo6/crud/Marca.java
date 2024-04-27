@@ -2,6 +2,7 @@ package grupo6.crud;
 
 import jakarta.persistence.*;
 
+import java.sql.Timestamp;
 import java.util.Date;
 @Entity
 @Table(name = "marca")
@@ -13,7 +14,7 @@ public class Marca {
     @Column(name = "descripcion", nullable = false)
     private String descripcion;
     @Column(name = "fecha_baja")
-    private Date fechabaja;
+    private Timestamp fechabaja;
 
     public Long getId() {
         return id;
@@ -35,7 +36,7 @@ public class Marca {
         return fechabaja;
     }
 
-    public void setFechabaja(Date fechabaja) {
+    public void setFechabaja(Timestamp fechabaja) {
         this.fechabaja = fechabaja;
     }
 }

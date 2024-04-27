@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Producto {
@@ -19,7 +20,7 @@ public class Producto {
     @Column(name = "id_marca", nullable = false)
     private int idMarca;
     @Column(name = "fecha_baja")
-    private Date fechaBaja;
+    private Timestamp fechaBaja;
 
     public Long getIdProducto() {
         return idProducto;
@@ -57,7 +58,7 @@ public class Producto {
         return fechaBaja;
     }
 
-    public void setFechaBaja(Date fechaBaja) {
+    public void setFechaBaja(Timestamp fechaBaja) {
         this.fechaBaja = fechaBaja;
     }
 }

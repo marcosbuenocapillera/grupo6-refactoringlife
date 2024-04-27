@@ -24,12 +24,6 @@ public class MarcaController {
 
     @Autowired
     private MarcaService marcaService;
-    public Marca marca(){
-        Marca marca = new Marca();
-        marca.setDescripcion("Adidas");
-        marca.setFechabaja(new Date(2025,12,31));
-        return marca;
-    }
 
     /*
     //Servicio Obtener todas las marcas
