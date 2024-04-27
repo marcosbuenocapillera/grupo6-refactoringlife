@@ -3,6 +3,7 @@ package grupo6.crud.controller;
 import grupo6.crud.Marca;
 import grupo6.crud.service.MarcaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,12 +44,17 @@ public class MarcaController {
         return ResponseEntity.ok(marcas);
     }
 
-
     //Servicio crear Marca
     @PostMapping("/crearMarca")
-    public Marca crearMarca(@RequestBody Marca marca) {
-        return marca;
+    public ResponseEntity<Marca> crearMarca(@RequestBody Marca marca) {
+        Marca createdMarca = marcaService.crearMarca(marca);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdMarca);
     }
+
+
+
+
+
 
     //Servicio actualizar Marca
     @PutMapping("/actualizarMarca")

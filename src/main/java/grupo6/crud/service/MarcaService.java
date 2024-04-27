@@ -16,6 +16,9 @@ public class MarcaService {
     }
 
 
+    public Marca crearMarca(Marca marca) {
+        return marcaRepository.save(marca);
+    }
 
 
 }
