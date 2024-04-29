@@ -47,18 +47,21 @@ public class MarcaController {
 
 
 
-
-
-
     //Servicio actualizar Marca
     @PutMapping("/actualizarMarca")
     public String actualizarMarca() {
         return "Marca actualizada";
     }
    //Servicio eliminar marca logico
-    @DeleteMapping("/eliminarMarca")
+
     public String eliminarMarca() {
-        return "Marca Eliminada";
+        return "Marca desactivada";
+    }
+
+    @PatchMapping("/eliminarMarca/{id}") // Importante: Método PATCH
+    public ResponseEntity<Marca> eliminarMarca(@PathVariable Long id) {
+        marcaService.eliminarMarca(id);
+        return ResponseEntity.noContent().build();
     }
 
 }
