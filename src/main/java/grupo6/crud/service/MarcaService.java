@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -14,7 +15,16 @@ public class MarcaService {
     private MarcaRepository marcaRepository;
 
     public List<Marca> obtenerTodasMarca() {
-        return marcaRepository.findAll();
+        List<Marca> todasLasMarcas = marcaRepository.findAll();
+
+        List<Marca> marcasConFechaBajaNoNula = new ArrayList<>();
+        for (Marca marca : todasLasMarcas) {
+            if (marca.getFechabaja() != null) {
+                marcasConFechaBajaNoNula.add(marca);
+            }
+        }
+
+        return marcasConFechaBajaNoNula;
     }
 
 
