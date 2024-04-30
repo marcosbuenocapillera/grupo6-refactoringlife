@@ -8,18 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ProductController {
 
-    //Servicio Obtener productos
-    @GetMapping("/obtenerProductos")
-    public String obtenerProductos(){
-        return "Obtengo la lista de productos";
-    }
-
-
-    //Servicio crear productos
-    @PostMapping("/crearProductos")
-    public String crearProductos(){
-        return "Creo  producto";
-    }
 
 
 }

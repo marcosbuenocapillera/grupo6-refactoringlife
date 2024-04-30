@@ -13,32 +13,10 @@ import java.util.List;
 public class MarcaService {
     @Autowired
     private MarcaRepository marcaRepository;
-
-    public List<Marca> obtenerTodasMarca() {
-        List<Marca> todasLasMarcas = marcaRepository.findAll();
-
-        List<Marca> marcasConFechaBajaNoNula = new ArrayList<>();
-        for (Marca marca : todasLasMarcas) {
-            if (marca.getFechabaja() != null) {
-                marcasConFechaBajaNoNula.add(marca);
-            }
-        }
-
-        return marcasConFechaBajaNoNula;
-    }
-
-
-    public Marca crearMarca(Marca marca) {
-        return marcaRepository.save(marca);
-    }
-
     public void eliminarMarca(Long id) {
-        System.out.println("Eliminando marca con id: " + id);
         marcaRepository.findById(id).ifPresent(marca -> {
-            System.out.println("Marca encontrada: " + marca);
             marca.setFechabaja(null);
             marcaRepository.save(marca);
-
         });
     }
 }
