@@ -1,13 +1,10 @@
 package com.refactoringlife.grupo6.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.sql.Timestamp;
 import java.util.Date;
-
+@Entity
 public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +18,17 @@ public class Producto {
     private int idMarca;
     @Column(name = "fecha_baja")
     private Timestamp fechaBaja;
+    @ManyToOne
+    @JoinColumn(name = "tipo_producto_id")
+    private TipoProducto tipoProducto;
+
+    public TipoProducto getTipoProducto() {
+        return tipoProducto;
+    }
+
+    public void setTipoProducto(TipoProducto tipoProducto) {
+        this.tipoProducto = tipoProducto;
+    }
 
     public Long getIdProducto() {
         return idProducto;
