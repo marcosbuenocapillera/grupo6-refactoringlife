@@ -6,6 +6,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,6 +28,10 @@ public class TipoProductoService {
     }
 
     public void eliminarTipoProducto(Long id){
-        tipoProductoRepository.deleteById(id);
+        Optional<TipoProducto> tipoProductoOptional = tipoProductoRepository.findById(id);
+        tipoProductoOptional.ifPresent(tipoProducto -> {
+            tipoProducto.setFechaBaja(new Timestamp(System.currentTimeMillis()));
+            tipoProductoRepository.save(tipoProducto);
+        });
     }
 }
