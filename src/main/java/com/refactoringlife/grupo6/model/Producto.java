@@ -3,7 +3,8 @@ package com.refactoringlife.grupo6.model;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
-import java.util.Date;
+import java.time.LocalDateTime;
+
 @Entity
 public class Producto {
     @Id
@@ -17,7 +18,7 @@ public class Producto {
     @Column(name = "id_marca", nullable = false)
     private int idMarca;
     @Column(name = "fecha_baja")
-    private Timestamp fechaBaja;
+    private LocalDateTime fechaBaja;
     @ManyToOne
     @JoinColumn(name = "tipo_producto_id")
     private TipoProducto tipoProducto;
@@ -62,11 +63,11 @@ public class Producto {
         this.idMarca = idMarca;
     }
 
-    public Date getFechaBaja() {
+    public LocalDateTime getFechaBaja() {
         return fechaBaja;
     }
 
     public void setFechaBaja(Timestamp fechaBaja) {
-        this.fechaBaja = fechaBaja;
+        this.fechaBaja = fechaBaja.toLocalDateTime();
     }
 }
