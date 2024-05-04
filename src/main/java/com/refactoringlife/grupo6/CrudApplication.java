@@ -11,9 +11,4 @@ public class CrudApplication {
     public static void main(String[] args) {
         SpringApplication.run(CrudApplication.class, args);
     }
-
-    @GetMapping("Crud")
-    public String Crud(){
-        return "Refactoring life - Backend";
-    }
 }
